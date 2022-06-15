@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-export default function LogoutButton() {
+export default function CandidatesButton() {
   return (
     <div>
-        <Link to="/Candidates">Elections</Link>
+        <Link to="/candidates">Candidates</Link>
     </div>
   );
 }

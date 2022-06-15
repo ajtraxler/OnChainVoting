@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function LogoutButton() {
+export default function ElectionsButton() {
   return (
     <div>
         <Link to="/elections">Elections</Link>
