@@ -17,6 +17,7 @@ export default function CandidateForm (props) {
             value={props.newCandidate} onChange={(evt) => props.setNewCandidate(evt.target.value)} required/>
             <Text> This will say the candidate's eth address </Text>
             <Text> This will say the chosen Token </Text>
+            {/* We could have it that a drop down menu appears w all of the tokens so they can select the token */}
             <Label fontFamily='Roboto' htmlFor='position'> Position: </Label>
             <Input fontFamily='Roboto' name='position' type='text'
             value={props.position} onChange={(evt) => props.setPosition(evt.target.value)} required/>
@@ -25,6 +26,9 @@ export default function CandidateForm (props) {
             value={props.about} onChange={(evt) => props.setAbout(evt.target.value)} required/>
           </Box>
           <Button>Submit</Button> 
+          {/* once the form has been submitted, do we want a modal to come up that
+          says that the form has been submitted and when you click "ok" it takes you 
+          back to the home page? */}
         </form>
 </div>
   )

@@ -25,7 +25,7 @@ export default function ElectionForm (props) {
             <Input fontFamily='Roboto' name='max' type='number' 
             value={props.max} onChange={(evt) => props.setMax(evt.target.value)} required/>
           </Box>
-          <Button></Button> 
+          <Button>Submit</Button> 
         </form>
 </div>
   )

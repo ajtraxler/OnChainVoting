@@ -8,7 +8,7 @@ import {
   Image,
   Heading,
   Text,
-  Button
+  Button, 
 } from 'rebass'
 
 
