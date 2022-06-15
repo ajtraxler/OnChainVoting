@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import React from 'react'
+import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from '@emotion/react'
 import theme from '@rebass/preset'
 import {
@@ -14,8 +15,40 @@ import {
 
 
 export default function Login(props) {
+
+  const [ethAddress, setEthAddress] = useState('No address yet')
+  const [nftCollection, setNftCollection] = useState('No NFTs yet')
+  const navigate = useNavigate();
+
+  //login with metamask
+  const loginHandler = () => {
+    try {
+      if (window.ethereum) {
+        window.ethereum.request({ method: 'eth_requestAccounts' })
+        .then(result => {
+          setEthAddress(result[0]);
+          return result[0]
+        })
+        .then((NFTObject) => {
+          //console.log(NFTObject.nft_groups, "nftList from .then")
+          setNftCollection(NFTObject.nft_groups);
+          navigate('./tokens', { state: NFTObject.nft_groups })
+        })
+      }
+      else {
+        console.log("install metamask")
+      }
+    }
+    catch (err) {
+        console.log(err, "Error logging into Metamask")
+    }
+}
+
+
   return (
     <main style={{ padding: "1rem 0" }}>
+
+
         <ThemeProvider theme={theme}>
         <Box width={256}>
     <Card
@@ -36,9 +69,25 @@ export default function Login(props) {
     </Card>
   </Box>
         </ThemeProvider>
+
+{/* <div className="grad">
+
+            <div className="loginMainContent">
+                <h1> Connect with Your NFT Community </h1>
+                <h3>Wallet connected: {ethAddress}</h3>
+                <h3>NFTS: {nftCollection ?
+                    nftCollection :
+                    null}</h3>
+                <button className="loginButton" id="loginDash" onClick={loginHandler} >LOGIN </button>
+            </div>
+
+        </div> */}
+
        <Link to="/tokens/:userId">
           <Button>Login</Button>
        </Link>
+
+       
     </main>
   );
 }
