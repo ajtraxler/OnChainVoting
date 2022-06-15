@@ -1,3 +1,4 @@
+import ElectionForm from "../forms/election-form";
 import LogoutButton from "../navigation-buttons/logout-button";
 import TokensButton from "../navigation-buttons/tokens-button";
 
@@ -9,6 +10,7 @@ export default function AddElection() {
         <LogoutButton/>
       </div>
       <h2>addElection</h2>
+      <ElectionForm></ElectionForm>
     </main>
   );
 }

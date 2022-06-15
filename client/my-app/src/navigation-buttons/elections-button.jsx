@@ -1,9 +1,21 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Button, Text} from "rebass";
 
 export default function ElectionsButton() {
+
+  let navigate = useNavigate(); 
+  const ElectionsRoute = () =>{ 
+    let path = `/elections/:tokenId`; 
+    navigate(path);
+  }
+
   return (
     <div>
-        <Link to="/elections">Elections</Link>
+      <Button mr={2} onClick={ElectionsRoute} backgroundColor="#33e">
+        <Text>
+          Elections
+        </Text>
+      </Button>
     </div>
   );
 }

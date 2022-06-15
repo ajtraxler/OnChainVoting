@@ -1,9 +1,21 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Button, Text} from "rebass";
 
 export default function TokensButton() {
+
+  let navigate = useNavigate(); 
+  const TokensRoute = () =>{ 
+    let path = `/tokens/:userId`; 
+    navigate(path);
+  }
+
   return (
     <div>
-        <Link to="/tokens">Tokens</Link>
+      <Button mr={2} onClick={TokensRoute} backgroundColor="#33e">
+        <Text>
+          Tokens
+        </Text>
+      </Button>
     </div>
   );
 }

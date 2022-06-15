@@ -1,6 +1,7 @@
 import LogoutButton from "../navigation-buttons/logout-button";
 import TokensButton from "../navigation-buttons/tokens-button";
 import ElectionsButton from "../navigation-buttons/elections-button";
+import CandidateForm from "../forms/candidate-form";
 
 export default function AddCandidate() {
   return (
@@ -11,6 +12,7 @@ export default function AddCandidate() {
         <LogoutButton/>
       </div>
       <h2>addCandidate</h2>
+      <CandidateForm/>
     </main>
   );
 }
