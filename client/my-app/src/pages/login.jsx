@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from '@emotion/react'
 import theme from '@rebass/preset'
@@ -16,10 +15,7 @@ import {
 
 export default function Login(props) {
 
-  const [ethAddress, setEthAddress] = useState('No address yet')
-  // THIS SHOULD PROBABLY GO ON THE NEXT PAGE  
-  // const [tokenCollection, setTokenCollection] = useState('No NFTs yet')
-  //const navigate = useNavigate();
+const [ethAddress, setEthAddress] = useState('No address yet')
 
 useEffect(() => {
   if (window.ethereum) {
