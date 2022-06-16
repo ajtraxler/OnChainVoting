@@ -17,33 +17,25 @@ import {
 export default function Login(props) {
 
   const [ethAddress, setEthAddress] = useState('No address yet')
-  const [nftCollection, setNftCollection] = useState('No NFTs yet')
-  const navigate = useNavigate();
+  // THIS SHOULD PROBABLY GO ON THE NEXT PAGE  
+  // const [tokenCollection, setTokenCollection] = useState('No NFTs yet')
+  //const navigate = useNavigate();
 
-  //login with metamask
-  const loginHandler = () => {
-    try {
-      if (window.ethereum) {
-        window.ethereum.request({ method: 'eth_requestAccounts' })
-        .then(result => {
-          setEthAddress(result[0]);
-          return result[0]
-        })
-        .then((NFTObject) => {
-          //console.log(NFTObject.nft_groups, "nftList from .then")
-          setNftCollection(NFTObject.nft_groups);
-          navigate('./tokens', { state: NFTObject.nft_groups })
-        })
-      }
-      else {
-        console.log("install metamask")
-      }
-    }
-    catch (err) {
-        console.log(err, "Error logging into Metamask")
-    }
+useEffect(() => {
+  if (window.ethereum) {
+    window.ethereum.request({ method: 'eth_requestAccounts' })
+    .then(response => {
+      setEthAddress(response[0]);
+    })
+    .catch( error => {
+      console.log(error)
+      console.log("Error occured.")
+  })
+} else {
+  console.log("metamask not connected")
 }
-
+  }
+, [])
 
   return (
     <main style={{ padding: "1rem 0" }}>
@@ -70,24 +62,13 @@ export default function Login(props) {
   </Box>
         </ThemeProvider>
 
-{/* <div className="grad">
-
             <div className="loginMainContent">
                 <h1> Connect with Your NFT Community </h1>
-                <h3>Wallet connected: {ethAddress}</h3>
-                <h3>NFTS: {nftCollection ?
-                    nftCollection :
-                    null}</h3>
-                <button className="loginButton" id="loginDash" onClick={loginHandler} >LOGIN </button>
-            </div>
-
-        </div> */}
-
-       <Link to="/tokens/:userId">
-          <Button>Login</Button>
-       </Link>
-
-       
+                {(ethAddress) ? <h3>Wallet connected: {ethAddress}</h3> : <h3>Connect your metamask wallet</h3>}
+                <Link to={`tokens/${ethAddress}`}>
+                  <button className="loginButton" id="loginDash" >LOGIN </button>
+                </Link>
+            </div> 
     </main>
   );
 }
