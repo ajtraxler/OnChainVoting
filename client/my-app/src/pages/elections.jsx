@@ -1,8 +1,6 @@
-import AddElectionButton from "../navigation-buttons/add-election-button";
 import LogoutButton from "../navigation-buttons/logout-button";
 import TokensButton from "../navigation-buttons/tokens-button";
 import { Flex } from "rebass";
-import ElectionsList from "../lists/electionsList";
 
 export default function Elections() {
 

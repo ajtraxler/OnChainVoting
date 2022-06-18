@@ -1,8 +1,8 @@
 import LogoutButton from "../navigation-buttons/logout-button";
 import TokensButton from "../navigation-buttons/tokens-button";
 import ElectionsButton from "../navigation-buttons/elections-button";
-import AddCandidateButton from "../navigation-buttons/add-candidate-button";
 import { Flex } from "rebass";
+import VotingForm from "../forms/voting-form";
 
 export default function Candidates() {
   return (
@@ -13,7 +13,8 @@ export default function Candidates() {
         <ElectionsButton/>
         <LogoutButton/>
       </Flex>
-      <AddCandidateButton/>
+        {/* get the hard coded data from the smart contract */}
+        <VotingForm/>
     </main>
   );
 }
