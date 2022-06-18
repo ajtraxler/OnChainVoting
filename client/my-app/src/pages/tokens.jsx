@@ -9,8 +9,7 @@ export default function Tokens() {
   useEffect(() => {
     window.ethereum.request({ method: 'eth_requestAccounts' })
     .then((NFTObject) => {
-      //console.log(NFTObject.nft_groups, "nftList from .then")
-      //I'm assuming this needs to change?
+      console.log(NFTObject.nft_groups, "nftList from .then")
       console.log(NFTObject.nft_groups);
       setTokenCollection(NFTObject.nft_groups);
     })

@@ -14,6 +14,8 @@ export default function Candidate() {
         <CandidatesButton/>
         <LogoutButton/>
       </Flex>
+        {/* get the hard coded data from the smart contract */}
+
     </main>
   );
 }
